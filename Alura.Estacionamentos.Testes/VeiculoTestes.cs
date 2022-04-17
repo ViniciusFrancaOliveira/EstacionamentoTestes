@@ -8,6 +8,7 @@ namespace Alura.Estacionamentos.Testes
     public class VeiculoTestes
     {
         [Fact]
+        [Trait("Funcionalidade", "Acelerar")]
         public void TestaVeiculoAcelerar()
         {
             //Arrange
@@ -34,9 +35,36 @@ namespace Alura.Estacionamentos.Testes
         {
             //Arrange
             var veiculo = new Veiculo();
+
             //Act
             //Assert
             Assert.Equal(TipoVeiculo.Automovel, veiculo.Tipo);
+        }
+
+        [Fact(Skip = "Não implementado.")]
+        public void ValidaNomeProprietario()
+        {
+
+        }
+
+        [Fact]
+        public void DadosVeiculo()
+        {
+            //Arrange
+            Veiculo carro = new Veiculo()
+            {
+                Proprietario = "Vinicius",
+                Tipo = TipoVeiculo.Automovel,
+                Cor = "Verde",
+                Placa = "ZAP-5467",
+                Modelo = "Variante"
+            };
+
+            //Act
+            string dados = carro.ToString();
+
+            //Assert
+            Assert.Contains("Ficha do Veículo:", dados);
         }
     }
 }
