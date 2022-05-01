@@ -6,18 +6,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Alura.Estacionamentos.Testes
 {
     public class PatioTestes
     {
+        private Veiculo veiculo { get; set; }
+        public ITestOutputHelper TestOutputHelper { get; set; }
+
+        public PatioTestes(ITestOutputHelper testOutputHelper)
+        {
+            veiculo = new Veiculo();
+            this.TestOutputHelper = testOutputHelper;
+        }
+
         [Fact]
-        public void ValidaFaturamento()
+        public void ValidaFaturamentoComUmVeiculo()
         {
             //Arrange
             Patio estacionamento = new Patio();
             Operador operador = new Operador() { Nome = "Gilerto Soares" };
-            Veiculo veiculo = new Veiculo();
             estacionamento.OperadorPatio = operador;
             veiculo.Proprietario = "Vinicius França";
             veiculo.Tipo = TipoVeiculo.Automovel;
@@ -45,7 +54,6 @@ namespace Alura.Estacionamentos.Testes
             //Arrange
             Patio estacionamento = new Patio();
             Operador operador = new Operador() { Nome = "Gilerto Soares" };
-            Veiculo veiculo = new Veiculo();
             estacionamento.OperadorPatio = operador;
             veiculo.Proprietario = proprietario;
             veiculo.Tipo = TipoVeiculo.Automovel;
@@ -71,7 +79,6 @@ namespace Alura.Estacionamentos.Testes
             //Arrange
             Patio estacionamento = new Patio();
             Operador operador = new Operador() { Nome = "Gilerto Soares" };
-            Veiculo veiculo = new Veiculo();
             estacionamento.OperadorPatio = operador;
             veiculo.Proprietario = proprietario;
             veiculo.Tipo = TipoVeiculo.Automovel;
@@ -95,7 +102,6 @@ namespace Alura.Estacionamentos.Testes
             //Arrange
             Patio estacionamento = new Patio();
             Operador operador = new Operador() { Nome = "Gilerto Soares" };
-            Veiculo veiculo = new Veiculo();
             estacionamento.OperadorPatio = operador;
             veiculo.Proprietario = "Vinicius";
             veiculo.Tipo = TipoVeiculo.Automovel;

@@ -2,17 +2,24 @@ using Alura.Estacionamento.Alura.Estacionamento.Modelos;
 using Alura.Estacionamento.Modelos;
 using System;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Alura.Estacionamentos.Testes
 {
     public class VeiculoTestes
     {
+        private Veiculo veiculo;
+        public ITestOutputHelper TestOutputHelper { get; set; }
+
+        public VeiculoTestes(ITestOutputHelper testOutputHelper)
+        {
+            this.TestOutputHelper = testOutputHelper;
+            veiculo = new Veiculo();
+        }
         [Fact]
         [Trait("Funcionalidade", "Acelerar")]
-        public void TestaVeiculoAcelerar()
+        public void TestaVeiculoAcelerarParametro10()
         {
-            //Arrange
-            Veiculo veiculo = new Veiculo();
             //Act
             veiculo.Acelerar(10);
             //Assert
@@ -20,10 +27,8 @@ namespace Alura.Estacionamentos.Testes
         }
 
         [Fact]
-        public void TestaVeiculoFreiar()
+        public void TestaVeiculoFrearParametro10()
         {
-            //Arrange
-            Veiculo veiculo = new Veiculo();
             //Act
             veiculo.Frear(15);
             //Assert
@@ -33,22 +38,19 @@ namespace Alura.Estacionamentos.Testes
         [Fact]
         public void TestaTipoVeiculo()
         {
-            //Arrange
-            var veiculo = new Veiculo();
-
             //Act
             //Assert
             Assert.Equal(TipoVeiculo.Automovel, veiculo.Tipo);
         }
 
-        [Fact(Skip = "Não implementado.")]
-        public void ValidaNomeProprietario()
+        [Fact(Skip = "NÃ£oo implementado.")]
+        public void ValidaNomeProprietarioDoVeiculo()
         {
 
         }
 
         [Fact]
-        public void DadosVeiculo()
+        public void FichaInformacaoDoVeiculo()
         {
             //Arrange
             Veiculo carro = new Veiculo()
@@ -64,7 +66,7 @@ namespace Alura.Estacionamentos.Testes
             string dados = carro.ToString();
 
             //Assert
-            Assert.Contains("Ficha do Veículo:", dados);
+            Assert.Contains("Ficha do VeÃ­culo:", dados);
         }
     }
 }
