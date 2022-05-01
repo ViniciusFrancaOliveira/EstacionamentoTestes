@@ -68,5 +68,27 @@ namespace Alura.Estacionamentos.Testes
             //Assert
             Assert.Contains("Ficha do Veículo:", dados);
         }
+
+        [Fact]
+        public void TestaNomeProprietarioVeiculoCaracteres()
+        {
+            string nomeProprietario = "Ab";
+
+            Assert.Throws<System.FormatException>(
+                () => veiculo.Proprietario = nomeProprietario
+            ); 
+        }
+
+        [Theory]
+        [InlineData("AAA-22")]
+        [InlineData("A2D-1293")]
+        [InlineData("231C2345")]
+        [InlineData("AAA-123D")]
+        public void TestaExceptionDaPlaca(string placa)
+        {
+            Assert.Throws<System.FormatException>(
+                () => veiculo.Placa = placa
+            );
+        }
     }
 }
