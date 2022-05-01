@@ -13,10 +13,14 @@ namespace Alura.Estacionamentos.Testes
     public class PatioTestes
     {
         private Veiculo veiculo { get; set; }
+        private Patio estacionamento { get; set; }
+        private Operador operador { get; set; }
         public ITestOutputHelper TestOutputHelper { get; set; }
 
         public PatioTestes(ITestOutputHelper testOutputHelper)
         {
+            estacionamento = new Patio();
+            operador = new Operador();
             veiculo = new Veiculo();
             this.TestOutputHelper = testOutputHelper;
         }
@@ -25,8 +29,7 @@ namespace Alura.Estacionamentos.Testes
         public void ValidaFaturamentoComUmVeiculo()
         {
             //Arrange
-            Patio estacionamento = new Patio();
-            Operador operador = new Operador() { Nome = "Gilerto Soares" };
+            operador.Nome = "Gilerto Soares";
             estacionamento.OperadorPatio = operador;
             veiculo.Proprietario = "Vinicius França";
             veiculo.Tipo = TipoVeiculo.Automovel;
@@ -52,8 +55,7 @@ namespace Alura.Estacionamentos.Testes
                                                        string cor, string modelo)
         {
             //Arrange
-            Patio estacionamento = new Patio();
-            Operador operador = new Operador() { Nome = "Gilerto Soares" };
+            operador.Nome = "Gilerto Soares";
             estacionamento.OperadorPatio = operador;
             veiculo.Proprietario = proprietario;
             veiculo.Tipo = TipoVeiculo.Automovel;
@@ -77,8 +79,7 @@ namespace Alura.Estacionamentos.Testes
                                            string cor, string modelo)
         {
             //Arrange
-            Patio estacionamento = new Patio();
-            Operador operador = new Operador() { Nome = "Gilerto Soares" };
+            operador.Nome = "Gilerto Soares";
             estacionamento.OperadorPatio = operador;
             veiculo.Proprietario = proprietario;
             veiculo.Tipo = TipoVeiculo.Automovel;
@@ -100,8 +101,7 @@ namespace Alura.Estacionamentos.Testes
         public void AlteraDadosVeiculo()
         {
             //Arrange
-            Patio estacionamento = new Patio();
-            Operador operador = new Operador() { Nome = "Gilerto Soares" };
+            operador.Nome = "Gilerto Soares";
             estacionamento.OperadorPatio = operador;
             veiculo.Proprietario = "Vinicius";
             veiculo.Tipo = TipoVeiculo.Automovel;
